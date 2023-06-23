@@ -1,0 +1,122 @@
+<div class="container mt-3">
+  <form class="container" [formGroup]="registerForm" (ngSubmit)="submit($event)">
+
+    <label class="form-label">Name</label>
+    <input formControlName="name" type="text" [ngClass]="{'is-invalid':
+    registerForm.get('name')?.errors &&
+    registerForm.get('name')?.touched
+}" class="form-control mb-2" placeholder="Enter Trader Name" />
+    <ng-container *ngIf="getEmployeeName.touched">
+      <div *ngIf="getEmployeeName.hasError('required')" class="form-text text-danger">
+        Trader Name is required
+      </div>
+      <div *ngIf="getEmployeeName.hasError('pattern')" class="form-text text-danger">
+        Name Must Be Between 5 to 25 Characters
+      </div>
+    </ng-container>
+
+
+    <label>email</label>
+    <input formControlName="email" type="email" type="text" [ngClass]="{'is-invalid':
+          registerForm.get('email')?.errors &&
+          registerForm.get('email')?.touched
+      }" class="form-control mb-2" placeholder="Enter  Email" />
+    <ng-container *ngIf="getEmployeeEmail.touched">
+      <div *ngIf="getEmployeeEmail.hasError('required')" class="form-text text-danger">
+        Email is required
+      </div>
+      <div *ngIf="getEmployeeEmail.hasError('pattern')" class="form-text text-danger">
+        Enter Valid Email
+      </div>
+      <!-- <div *ngIf="EmailFlag == true" class="form-text text-danger">
+        Email Is Already Exist
+      </div> -->
+    </ng-container>
+
+
+    <label>phone</label>
+    <input formControlName="phone" type="text" [ngClass]="{
+        'is-invalid':
+          registerForm.get('phone')?.errors &&
+          registerForm.get('phone')?.touched
+      }" class="form-control mb-2" placeholder="Enter Phone" />
+    <ng-container *ngIf="getEmployeePhone.touched">
+      <div *ngIf="getEmployeePhone.hasError('required')" class="form-text text-danger">
+        Phone is required
+      </div>
+
+      <div *ngIf="getEmployeePhone.hasError('pattern')" class="form-text text-danger">
+        Enter Valid Phone
+      </div>
+    </ng-container>
+
+ 
+    <label>address</label>
+    <input name="address" formControlName="address" type="text" placeholder="Enter Your Address" [ngClass]="{
+        'is-invalid':
+          registerForm.get('address')?.errors &&
+          registerForm.get('address')?.touched
+      }" class="form-control mb-2" />
+    <ng-container *ngIf="getEmployeeAddress.touched">
+      <div *ngIf="getEmployeeAddress.hasError('required')" class="form-text text-danger">
+        Address is required
+      </div>
+      <div *ngIf="getEmployeeAddress.hasError('pattern')" class="form-text text-danger">
+        Enter Valid Address
+      </div>
+    </ng-container>
+
+
+    <label>age</label>
+    <input name="age" formControlName="age" type="number" placeholder="Enter Your Age" [ngClass]="{
+        'is-invalid':
+          registerForm.get('age')?.errors && registerForm.get('age')?.touched
+      }" class="form-control mb-2" />
+    <ng-container *ngIf="getEmployeeAge.touched">
+      <div *ngIf="getEmployeeAge.hasError('required')" class="form-text text-danger">
+        Age is required
+      </div>
+      <div *ngIf="getEmployeeAge.hasError('pattern')" class="form-text text-danger">
+        Enter Valid Age Between 25 : 60
+      </div>
+    </ng-container>
+
+
+    <label>password</label>
+    <input name="password" formControlName="password" type="password" placeholder="Enter Your password" [ngClass]="{
+        'is-invalid':
+          registerForm.get('password')?.errors &&
+          registerForm.get('password')?.touched
+      }" class="form-control mb-2" />
+    <ng-container *ngIf="getEmployeePassword.touched">
+      <div *ngIf="getEmployeePassword.hasError('required')" class="form-text text-danger">
+        Password is required
+      </div>
+
+      <div *ngIf="getEmployeePassword.hasError('pattern')" class="form-text text-danger">
+        Enter Valid Password
+      </div>
+    </ng-container>
+
+
+    <label>Branch</label>
+    <select [ngClass]="{
+        'is-invalid':
+          registerForm.get('branch_Id')?.errors &&
+          registerForm.get('branch_Id')?.touched
+      }" class="form-select form-select-lg mb-3" formControlName="branch_Id" aria-label=".form-select-lg example">
+      <option *ngFor="let bra of branches" selected value="{{ bra.id }}">
+        {{ bra.name }}
+      </option>
+    </select>
+    <ng-container *ngIf="getEmplyeeBranch.touched">
+      <div
+        *ngIf="getEmplyeeBranch.hasError('required')"
+        class="form-text text-danger"
+      >
+        Branch is required
+      </div>
+    </ng-container>
+    <button type="submit" class="btn btn-info text-capitalize">register</button>
+  </form>
+</div>

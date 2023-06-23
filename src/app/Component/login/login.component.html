@@ -1,0 +1,13 @@
+<div class="content">
+  <form class="form-content p-5"[formGroup]="registerForm" (ngSubmit)="Login($event)" >
+    <div class="form-item mb-3">
+      <label class="" for="username">email</label>
+      <input type="text" class="form-control" formControlName="email" />
+    </div>
+    <div class="form-item mb-3">
+      <label class="" for="password">password</label>
+      <input type="password" class="form-control" formControlName="password" />
+    </div>
+    <button class="btn btn-info text-center" > LogIn</button>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+    <button class="btn btn-info mt-3 mb-3" [routerLink]="['/employee']"><i class="fa-solid fa-plus fs-4"></i></button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">branch</th>
+                <th scope="col">Avaliaple</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees; let i = index">
+                <td>{{i}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.address}}</td>
+                <td>{{emp.phone}}</td>
+                <td>{{emp.branch_Name}}</td>
+                <td> <input id="{{emp.id}}" (click)="softDelete(emp)" [checked]="emp.available" type="checkbox"></td>
+                <td>
+                    <i id="{{emp.id}}" [routerLink]="['/employee',emp.id]" class="fa-solid fa-pen-to-square me-3"></i>
+                    <!-- <i id="{{emp.id}}" (click)="Delete(emp.id)" class="fa-solid fa-trash text-danger"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    ></i> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
